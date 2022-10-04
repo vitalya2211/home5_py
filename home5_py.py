@@ -50,7 +50,7 @@ while bool_exit:
         name2=input('следующий игрок, представьтесь -> ')
         count=0
         while True:
-            while not(count>0 and count<28): 
+            while not(count>0 and count<29): 
                 print(f'{name} сколько конфет возмете?')
                 count=int(input())
             candies-=count
@@ -58,7 +58,7 @@ while bool_exit:
                 print(f'{name2} winner!!!')
                 break
             count=0
-            while not(count>0 and count<28):
+            while not(count>0 and count<29):
                 print(f'{name2} сколько конфет возмете?')
                 count=int(input())
             candies-=count
