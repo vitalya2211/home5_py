@@ -1,5 +1,22 @@
 import random
+def up_and_num(lp:list,n:list)->list:
+    lp=list(map(lambda x:x.upper(),lp))
+    for i in range(2,len(lp)+2):#иначе первый язык учавствует не по правилам
+        n.append(i)
+    return list(zip(n,lp))
+def game(num_list):
+    new_list=[]
+    for j,i in num_list:
+        val = 0
+        for num in i:
+            val+=ord(num)
+            #print(num)
+        if not val%j:
+            new_list.append((j,i))
+            #print(f'{j} {i} + {val}')
+    return new_list
 
+#Ускоренная обработка данных: lambda, filter, map, zip, enumerate, list comprehension
 #1- Напишите программу, удаляющую из текста все слова, содержащие ""абв"".
 #'абвгдейка - это передача' = >" - это передача"
 string_val=input('введите текст, будут удалены слова, содержащие идущие подряд "абв" -> ')
@@ -60,15 +77,41 @@ while bool_exit:
 # и языка, написанного большими буквами.
 #[(1,'PYTHON'), (2,'C#')]
 #Вторая — которая отфильтрует этот список следующим образом: если сумма очков слова имеет в 
-#делителях номер, с которым она в паре в кортеже, то кортеж остается, его номер заменяется на сумму очков.
+#делителях номер, с которым она в паре в кортеже, то кортеж остается, его номер заменяется на 
+#сумму очков.
 #[сумма очков c# = 102, в делителях есть 2 с которым в паре. Значит список будет]
 #[(1,'PYTHON'), (102,'C#')]
 #Если нет — удаляется. Суммой очков называется сложение порядковых номеров букв в слове. 
 #Порядковые номера смотрите в этой таблице, в третьем столбце: https://www.charset.org/utf-8
 #Это — 16-ричная система, поищите, как правильнее и быстрее получать эти символы.
-#Cложите получившиеся числа и верните из функции в качестве ответа вместе с преобразованным списком
+#Cложите получившиеся числа и верните из функции в качестве ответа вместе с преобразованным 
+#списком
 #https://dzen.ru/media/simplichka/kak-tekst-hranitsia-v-kompiutere-chast-3-62d3d91515d67a522f78e1e6?&
 print('списки языков программирования и числа')
+lang_prog=['Планкалкюль', 'Ассемблер', 'AspectC++', 'AspectJ', 'AspectLua', 'CaesarJ',\
+   'Compose', 'ObjectTeams', 'Basic', 'Cg', 'JOVIAL', 'Pascal', 'PL/M', 'QBASIC', 'REXX', \
+   'Активный Оберон', 'Алгол 68', 'Алгол', 'Shell', 'Модула', 'Оберон', 'ПЛ/1',\
+  'Упрощённый Алгол', 'Фокал', 'Фортран', 'PHP', 'GNU bc', 'Euphoria', 'Limbo', 'Lua',\
+ 'Maple', 'MATLAB', 'Occam', 'PureBasic', 'Scilab',\
+'Активный Оберон', 'Алгол', 'Би', 'КОБОЛ', 'Модула-2', 'Модула-3', 'Оберон', 'Паскаль', \
+'РАПИРА', 'Си', 'Golang', 'Mercury', 'Prolog', 'Curry', 'Action Script', 'C++/CLI', 'C#',\
+'ColdFusion', 'D', 'Dart', 'Object Pascal', 'Dylan', 'Eiffel', 'Game Maker Language (GML)', \
+'Groovy', 'Haxe', 'Io', 'Java', 'JavaScript', 'MC#', 'Object Pascal', 'Objective-C', 'Perl',\
+'PHP', 'Pike', 'Python', 'Ruby', 'Self', 'Simula', 'Smalltalk', 'Swift', 'Vala',\
+'Visual Basic', 'Visual DataFlex', 'Zonnon', 'Ada', 'Активный Оберон', 'Компонентный Паскаль', \
+'Модула-3', 'Оберон-2', 'Cat', 'Clean', 'Dylan', 'Elm', 'Erlang', 'F#', 'Gentee', 'Haskell',\
+'Hope', 'J', 'Mathematica', 'OCaml', 'Scheme', 'АПЛ', 'Лисп', 'Лого', 'РЕФАЛ', 'C++', \
+'Kotlin', 'PHP', 'Curry', 'Delphi', 'Erlang', 'Mathematica', 'Mozart', 'Nemerle', 'Python', \
+'Rust', 'Scala', 'Swift', 'Zonnon', 'Активный Оберон', 'Component Pascal', 'Модула-3', 'Julia',\
+'Visual DataFlex', 'FBD', 'IL', 'Ladder Diagram', 'Sequential Function Chart', 'SPCLK', \
+'ST или SCL', 'Forth', 'Joy', 'NetP', 'PostScript', 'Afnix', 'Alef', 'ChucK', 'Clojure', \
+'Concurrent Pascal', 'Corn', 'C#', 'Curry', 'E', 'Eiffel', 'Erlang', 'Java']
+lang_prog=set(lang_prog)
+num=[]
+result=up_and_num(lang_prog,num)
+print(f'участвующие языки программирования - {result}')
+result=game(result)
+print(f'выигравшие языки: {result}')
 #Дополнительно(по желанию):
 #1 - Создайте программу для игры в ""Крестики-нолики"".
 print('игра крестики/нолики')
