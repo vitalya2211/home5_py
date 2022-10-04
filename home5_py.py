@@ -43,24 +43,29 @@ while bool_exit:
         print('игра с конфетами человек против человека\nЗадайте количество конфет\
  на столе ->',end=' ')
         candies=int(input())
-        input('играют два человека, первый ход определяет жеребьевка. нажмите ввод,\
+        input('играют два человека, первый ход определяет жеребьевка.\n нажмите ввод,\
  для выбора первого игрока')
         print(f'игрок №{random.randint(1,2)} начинает игру, введите свое имя  -> ')
         name=input()
         name2=input('следующий игрок, представьтесь -> ')
+        count=0
         while True:
-            print(f'{name} сколько конфет возмете?')
-            count=int(input())
+            while not(count>0 and count<28): 
+                print(f'{name} сколько конфет возмете?')
+                count=int(input())
             candies-=count
             if candies<=0:
                 print(f'{name2} winner!!!')
                 break
-            print(f'{name2} сколько конфет возмете?')
-            count2=int(input())
-            candies-=count2
+            count=0
+            while not(count>0 and count<28):
+                print(f'{name2} сколько конфет возмете?')
+                count=int(input())
+            candies-=count
             if candies<=0:
                 print(f'{name} winner!!!')
                 break
+            count=0
 
 
         print('начать игру заново? y\\n-> ')
